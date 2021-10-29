@@ -1,0 +1,108 @@
+#include "file_system.h"
+
+bool InitFiles() {
+    if (!LittleFS.begin()) {
+        Serial.println("An Error has occurred while mounting LittleFS");
+        return false;
+    }
+
+    File root = LittleFS.open("/", "r");
+    File file = root.openNextFile();
+
+    while (file) {
+        file = root.openNextFile();
+    }
+    return true;
+}
+
+bool LoadConfig() {
+    UserData user_data = {"", "", "", "", "", "", 0, ""};
+
+    if (!ReadSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) {
+        EraseFlash();
+        // WriteSandboxData();
+    }
+
+    snprintf(ssid_name, sizeof(ssid_name), "%s", user_data.ssid_name);
+    snprintf(ssid_password, sizeof(ssid_password), "%s", user_data.ssid_password);
+    snprintf(person_mail, sizeof(person_mail), "%s", user_data.person_mail);
+    snprintf(person_id, sizeof(person_id), "%s", user_data.person_id);
+    snprintf(token, sizeof(token), "%s", user_data.token);
+    snprintf(host, sizeof(host), "%s", user_data.host);
+    broker_port = user_data.broker_port;
+    snprintf(device_id, sizeof(device_id), "%s", user_data.device_id);
+
+    return true;
+}
+
+bool SaveConfig() {
+    UserData user_data = {"", "", "", "", "", "", 0, ""};
+
+    snprintf(user_data.ssid_name, sizeof(user_data.ssid_name), "%s", ssid_name);
+    snprintf(user_data.ssid_password, sizeof(user_data.ssid_password), "%s", ssid_password);
+    snprintf(user_data.person_mail, sizeof(user_data.person_mail), "%s", person_mail);
+    snprintf(user_data.person_id, sizeof(user_data.person_id), "%s", person_id);
+    snprintf(user_data.token, sizeof(user_data.token), "%s", token);
+    snprintf(user_data.host, sizeof(user_data.host), "%s", host);
+    user_data.broker_port = broker_port;
+    snprintf(user_data.device_id, sizeof(user_data.device_id), "%s", device_id);
+
+    return WriteSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data));
+}
+
+bool EraseFlash() {
+    UserData user_data = {"", "", "", "", "", "", 0, ""};
+
+    if (WriteSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) ESP.restart();
+    return false;
+}
+
+bool WriteSandboxData() {
+    Serial.println("Create sandbox config file");
+    UserData user_data = {"2smart",
+                          "ubuntu123",
+                          "dev@2smart.tech",
+                          "2e413047d9230122cbd4bcfa68aa7bb5a076231e479cc10af1420c01d5ecab2b",
+                          "TRytJYjM56",
+                          "cloud.2smart.com",
+                          11883,
+                          "device1634737143793099",
+                          "1634737143793099"};
+
+    if (WriteSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) {
+        Serial.println("writed succesfully ");
+        delay(3000);
+    }
+    ESP.restart();
+    return false;
+}
+
+bool WriteSettings(const char *file_path, uint8_t *data, size_t size_of_data) {
+    File configFile = LittleFS.open(file_path, "w");
+    if (!configFile) {
+        Serial.printf("Failed to open %s for writing\r\n", file_path);
+        return false;
+    }
+    configFile.write(data, size_of_data);
+    configFile.close();
+    Serial.printf("File %s saved\r\n", file_path);
+    return true;
+}
+
+bool ReadSettings(const char *file_path, uint8_t *data, size_t size_of_data) {
+    File configFile = LittleFS.open(file_path, "r");
+    if (!configFile) {
+        Serial.printf("Failed to open %s for reading\r\n", file_path);
+        return false;
+    }
+    size_t size = configFile.size();
+    if (size > 1024) {
+        Serial.printf("file %s is too large \r\n", file_path);
+        return false;
+    }
+
+    configFile.read(data, size_of_data);
+    configFile.close();
+
+    return true;
+}
