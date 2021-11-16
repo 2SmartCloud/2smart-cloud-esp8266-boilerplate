@@ -11,7 +11,7 @@ RelayState::RelayState(const char* name, const char* id, Node* node, PROPERTY_TY
 bool RelayState::Init(Homie* homie) {  // initialize toggles for notification
     bool status = true;
     if (!Property::Init(homie)) status = false;
-    SetValue(value_ == "true" ? "false" : "true");
+    SetValue(value_ == "true" ? "true" : "false");
     return status;
 }
 
