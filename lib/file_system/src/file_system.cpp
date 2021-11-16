@@ -20,7 +20,6 @@ bool LoadConfig() {
 
     if (!ReadSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) {
         EraseFlash();
-        // WriteSandboxData();
     }
 
     snprintf(ssid_name, sizeof(ssid_name), "%s", user_data.ssid_name);
@@ -54,26 +53,6 @@ bool EraseFlash() {
     UserData user_data = {"", "", "", "", "", "", 0, ""};
 
     if (WriteSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) ESP.restart();
-    return false;
-}
-
-bool WriteSandboxData() {
-    Serial.println("Create sandbox config file");
-    UserData user_data = {"2smart",
-                          "ubuntu123",
-                          "dev@2smart.tech",
-                          "2e413047d9230122cbd4bcfa68aa7bb5a076231e479cc10af1420c01d5ecab2b",
-                          "TRytJYjM56",
-                          "cloud.2smart.com",
-                          11883,
-                          "device1634737143793099",
-                          "1634737143793099"};
-
-    if (WriteSettings("/config.txt", reinterpret_cast<byte *>(&user_data), sizeof(user_data))) {
-        Serial.println("writed succesfully ");
-        delay(3000);
-    }
-    ESP.restart();
     return false;
 }
 
