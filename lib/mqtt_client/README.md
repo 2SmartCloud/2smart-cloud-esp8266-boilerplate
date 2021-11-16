@@ -11,6 +11,8 @@
 - void MqttLoop()
 - bool Subscribe(const char * topic)
 - bool Publish(const char * topic, const char * value, bool retained)
+- bool IsConnected()
+- bool IsReconnected()
 
 ***
 
@@ -59,3 +61,13 @@
 Возвращает статус публикации.
 
 ***
+
+**bool IsReconnected()**
+
+Возвращает флаг о переподключении.
+
+***
+
+**bool IsConnected()**
+
+Возвращает статус подключения к брокеру.

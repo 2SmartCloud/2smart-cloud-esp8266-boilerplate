@@ -136,6 +136,7 @@ void Homie::HandleMessage(String topic, byte* payload, unsigned int length) {
 void Homie::HandleCurrentState() {
     mqtt_client_->MqttLoop();
     device_->HandleCurrentState();
+    if (mqtt_client_->IsReconnected()) device_->Init();
 }
 
 bool Homie::IsConnected() { return mqtt_client_->IsConnected(); }

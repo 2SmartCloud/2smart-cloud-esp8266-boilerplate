@@ -7,7 +7,7 @@
 #include "gpio.h"
 #include "homie.h"
 #include "http_handler.h"
-#include "mqtt_сlient.h"
+#include "mqtt_client.h"
 #include "notifier/notifier.h"
 #include "ntp_time_client/ntp_time_client.h"
 #include "wifi_ap.h"
