@@ -11,24 +11,24 @@
 
 **TimeClient()**
 
-Создает объекты UDP и NTP клиентов.
+Creates UDP and NTP client objects.
 
 ***
 
 **void Init()**
 
-Инициализирует клиент. Устанавливает временную зону. Устанавливает частоту обновления времени.
+Initializes the client. Sets the time zone. Sets the frequency of time updates.
 
 ***
 
 **uint8_t GetHours()**
 
-Возвращает часы.
+Returns the hours.
 
 ***
 
 **uint8_t GetMinutes()**
 
-Возвращает минуты.
+Returns the minutes.
 
 ***

@@ -1,6 +1,6 @@
 # WifiAp
 
-Класс для работы с Wi-Fi точкой доступа.
+A class for working with a Wi-Fi access point.
 
 ***
 
@@ -14,18 +14,18 @@
 
 **WifiAp()**
 
-Создает объект Wi-Fi точки доступа.
+Creates a Wi-Fi access point object.
 
 ***
 
 **void Start(String ssid_name)**
 
-Запускает точку доступа с укзаным именем.
+Runs the access point with the specified name.
 
-- ssid_name: название сети.
+- ssid_name: the name of the network.
 
 ***
 
 **Blink()**
 
-Мигает светодиодом для отображения статуса устройства.  
+Flashing LED to display device status. 

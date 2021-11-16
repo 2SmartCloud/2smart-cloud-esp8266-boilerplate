@@ -1,6 +1,6 @@
 # MqttClient
 
-Класс для работы с MQTT протоколом.
+A class for working with the MQTT protocol.
 
 ***
 
@@ -18,56 +18,58 @@
 
 **MqttClient()**
 
-Создает объект MQTT клиента.
+Creates an MQTT client object.
 
 ***
 
 **bool Init(String username, String host, String port, String password, std::function<void(char\*, uint8_t\*, unsigned int)> callback)**
 
-Сохраянет принятые параметры и инициализирует MQTT клиент.
+Saves the received parameters and initializes the MQTT client.
 
-- username: идентификатор пользователя.
-- host: адрес где установлен MQTT брокер.
-- port: порт на котором находится брокер.
-- password: пароль для подключения к брокеру.
-- callback: функция которая будет вызываться  на принятие новых сообщений из брокера. 
+- username: user ID.
+- host: the address where the MQTT broker is installed.
+- port: the port on which the broker is located.
+- password: password for connecting to the broker.
+- callback: a function that will be called to accept new messages from the broker. 
 
-Возвращает статус инициализации.
+Returns the initialization status.
 
 ***
 
 **void MqttLoop()**
 
-Проверяет подключение к брокеру и наличиен новых сообщений.
+Checks the connection to the broker and the presence of new messages.
 
 ***
 
 **bool Subscribe(const char \*topic)**
 
-- topic: топик на который надо подписаться.
+- topic: topic to subscribe to.
 
-Возвращает статус подписки.
+Returns the subscription status.
 
 ***
 
 **bool Publish(const char \*topic, const char \*value, bool retained)**
 
-Проверяет подключен ли клиент к брокеру и публикует сообщение в топик.
+Checks if the client is connected to the broker and publishes a message to the topic.
 
-- topic: топик на который надо подписаться.
-- value: сообщение.
-- retained: флаг отвечающий за сохранение сообщения в топкие.
+- topic: topic to subscribe to.
+- value: message.
+- retained: flag responsible for storing the message in the topic.
 
-Возвращает статус публикации.
-
-***
-
-**bool IsReconnected()**
-
-Возвращает флаг о переподключении.
+Returns the status of the publication.
 
 ***
 
 **bool IsConnected()**
 
-Возвращает статус подключения к брокеру.
+Returns the connection status.
+
+***
+
+**bool IsReconnected()**
+
+Returns the reconnect flag.
+
+***

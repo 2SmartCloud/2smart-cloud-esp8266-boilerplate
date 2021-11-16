@@ -1,12 +1,12 @@
 # PROPERTY_TYPE
 
-Перечисление для разделения свойств на типы.
+An enumeration for separating properties into types.
 
 ## values
 
-- OPTION - свойство для опций, настроек и т.д.
-- TELEMETRY - свойство которое только публикует значения и не считывает их.
-- SENSOR - свойства для сенсоров.
+- OPTION - property for options, settings, etc.
+- TELEMETRY - a property that only publishes values and does not read them.
+- SENSOR - properties for sensors.
 
 ***
 
@@ -14,7 +14,7 @@
 
 ## API
 
-Класс для работы со свойствами девайса и нод.
+Class for working with device and node properties.
 
 ***
 
@@ -36,100 +36,100 @@
 
 **Property(const char\* name, const char\* id, Node\* node, PROPERTY_TYPE type, bool settable, bool retained, const char\* data_type)**
 
-Создает объект свойства.
+Creates a property object.
 
-- name: имя свойства.
-- id: идентификатор свойства.
-- node: указатель на объект [ноды](../node/README.md).
-- type: тип свойства.
-- settable: флаг отвечающий за возможность изменить значение.
-- retained: флаг отвечающий за сохранение сообщения в топкие.
-- data_type: тип данных сообщения согласно конвенции homie.
+- name: property name.
+- id: property identifier.
+- node: pointer to the [node](../node/README.md) object.
+- type: property type.
+- settable: flag responsible for the ability to change the value.
+- retained: flag responsible for storing the message in the topic.
+- data_type: message data type according to homie convention.
 
 ***
 
 **Property(const char\* name, const char\* id, Device\* device, PROPERTY_TYPE type, bool settable, bool retained, const char\* data_type)**
 
-Создает объект свойства.
+Creates a property object.
 
-- name: имя свойства.
-- id: идентификатор свойства.
-- device: указатель на объект [устройства](../device/README.md).
-- type: тип свойства.
-- settable: флаг отвечающий за возможность изменить значение.
-- retained: флаг отвечающий за сохранение сообщения в топкие.
-- data_type: тип данных сообщения согласно конвенции homie.
+- name: property name.
+- id: property identifier.
+- device: уpointer to the [device](../device/README.md) object.
+- type: property type.
+- settable: flag responsible for the ability to change the value.
+- retained: flag responsible for storing the message in the topic.
+- data_type: message data type according to homie convention.
 
 ***
 
 **virtual bool Init(Homie\* homie)**
 
-Инициализирует свойство опубликовав необходимые аттрибуты. При необходимости подписывается на свой топик. Сохраняет указатель на объект [homie](../README.md).
+Initializes the property by publishing the required attributes. Subscribes to the topic if necessary. Stores a pointer to the [homie](../README.md) object.
 
-- homie: указатель на объект [homie](../README.md).
+- homie: pointer to the [homie](../README.md) object.
 
-Возвращает статус инициализации.
+Returns the initialization status.
 
 ***
 
 **String GetValue() const**
 
-Возвращает значение свойства.
+Returns the value of the property.
 
 ***
 
 **String GetId() const**
 
-Возвращает идентификатор свойства.
+Returns the identifier of the property.
 
 ***
 
 **PROPERTY_TYPE GetType()**
 
-Возвращает тип свойства.
+Returns the type of the property.
 
 ***
 
 **Node\* GetNode() const**
 
-Возвращает указатель на объект [ноды](../node/README.md).
+Returns a pointer to the [node](../node/README.md) object.
 
 ***
 
 **Device\* GetDevice() const**
 
-Возвращает указатель на объект [устройства](../device/README.md).
+Returns a pointer to the [device](../device/README.md) object.
 
 ***
 
 **bool HasNewValue()**
 
-Возвращает флаг о наявности нового значения у свойства.
+Returns a flag on whether the new value is explicitly for the property.
 
 ***
 
 **void SetValue(String value)**
 
-Устанавливает в свойство новое значение, и публикует его в брокер.
+Sets a new value to the property and publishes it to the broker.
 
-- value: новое знаяение.
+- value: new value.
 
 ***
 
 **void SetHasNewValue(bool has_new_value)**
 
-Устанавливает флаг наявности нового(необработанного) значения свойства.
+Sets the explicit flag for the new (not proccessed) property value.
 
-- has_new_value: новое состояние флага. 
+- has_new_value: new state of the flag.
 
 ***
 
 **virtual void HandleCurrentState()**
 
-Метод-обработчик текущего значения свойства.
+Handler method for the current property value.
 
 ***
 
 **virtual void HandleSettingNewValue()**
 
-Метод-обработчик нового значения свойства. Если необходима специфическая обработка нового значения свойства его необходимо переопределить в классе наследнике.
+Handler method for the new property value. If specific handling of the new property value is required, it must be overridden in the inherited class.

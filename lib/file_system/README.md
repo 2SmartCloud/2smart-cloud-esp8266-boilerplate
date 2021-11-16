@@ -1,6 +1,6 @@
 # file_system
 
-Библиотека для работы с файловой системой.
+A class for working with file system.
 
 ***
 
@@ -17,48 +17,48 @@
 
 **bool InitFiles()**
 
-Инициализирует файловую систему.
+Initialize file system.
 
 ***
 
 **bool LoadConfig()**
 
-Читает конфигурационный файл с параметрами сети и пользователя.
+Read config file.
 
 ***
 
 **bool SaveConfig()**
 
-Записывает конфигурационный файл с параметрами сети и пользователя.
+Save config file.
 
 ***
 
 **bool EraseFlash()**
 
-Перезаписывает конфигурационный файл с параметрами сети и пользователя.
+Erase config from file system.
 
 ***
 
 **bool WriteSettings(const char \*file_path, uint8_t \*data, size_t - size_of_data)**
 
-Записывает данные в память.
+Write data to file.
 
-- file_path: имя файла.
-- data: данные.
-- size_of_data: размер данных.
+- file_path: path to file.
+- data: data to write.
+- size_of_data: size of data to write.
 
-Возвращает статус записи.
+Returns write status.
 
 ***
 
 **bool ReadSettings(const char \*file_path, uint8_t \*data, size_t - size_of_data)**
 
-Считывает данные из памяти.
+Read data from file.
 
-- file_path: имя файла.
-- data: данные.
-- size_of_data: размер данных.
+- file_path: path to file.
+- data: data to read.
+- size_of_data: size of data to read.
 
-Возвращает статус считывания.
+Returns read status.
 
 ***

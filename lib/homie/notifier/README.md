@@ -1,36 +1,36 @@
 # Notifier
 
-Класс для работы с уведомлениями.
+Class for working with notifications.
 
 ***
 ## API
 
 - Notifier(MqttClient* mqtt_client)
-- void SetUserHash(String user_hash)
+- void SetUserHash(const char* user_hash)
 - bool CreateNotification(const char* text)
 
 ***
 
 **Notifier(MqttClient\* mqtt_client)**
 
-Создает объект модуля для уведомлений.
+Creates a module object for notifications.
 
-- mqtt_client: указатель на объект [MQTT клиента](../../mqtt_client/src/README.md).
+- mqtt_client: pointer to the [MQTT client](../../mqtt_client/README.md) object.
 
 ***
 
 **void SetUserHash(const char\* user_hash)**
 
-Запоминает идентификатор пользователя.
+Remembers the user ID.
 
-- user_hash: идентификатор пользователя.
+- user_hash: user ID.
 
 ***
 
 **bool CreateNotification(const char\* text)**
 
-Публикует уведомление в топик `<user_hash>/notifications/create` 
+Publishes a notification to a topic `<user_hash>/notifications/create`
 
-- text: JSON строка с параметрами уведомления.
+- text: JSON string with notification parameters.
 
-Возвращает статус публикации уведомлений.
+Returns the status of publishing notifications.

@@ -1,6 +1,6 @@
 # Node 
 
-Класс для работы с нодами.
+Class for working with nodes.
 
 ***
 ## API
@@ -18,52 +18,52 @@
 
 **Node(const char\* name, const char\* id, Device\* device)**
 
-Создает объект ноды.
+Creates a node object.
 
-- name: имя ноды.
-- id: идентификатор ноды.
-- device: указатель на объект [устройства](../device/README.md).
+- name: node name.
+- id: node id.
+- device: pointer to the [device](../device/README.md) object.
 
 ***
 
 **virtual bool Init(Homie\* homie)**
 
-Инициализирует ноду опубликовав необходимые аттрибуты. Вызывает инициализацию у [свойств](../property/README.md). Сохраняет указатель на объект [homie](../README.md).
+Initializes the node by publishing the required attributes. Calls initialization on [properties](../property/README.md). Stores a pointer to the [homie](../README.md) object.
 
-- homie: указатель на объект [homie](../README.md).
+- homie: pointer to the [homie](../README.md) object.
 
-Возвращает статус инициализации.
+Returns the initialization status.
 
 ***
 
 **void AddProperty(Property\* property)**
 
-Добавляет указатель на свойство в список свойств для дальнейшего обращения.
+Adds a pointer to the property to the property list for further reference.
 
-- property: указатель на [свойство](../property/README.md).
+- property: pointer to the [property](../property/README.md).
 
 ***
 
 **String GetId() const**
 
-Возвращает идентификатор ноды.
+Returns the node identifier.
 
 ***
 
 **Device\* GetDevice() const**
 
-Возвращает указатель на объект [устройства](../device/README.md).
+Returns a pointer to the [device](../device/README.md) object.
 
 ***
 
 **Property\* GetProperty(String id)**
 
-Возвращает указатель на свойство по идентификатору.
+Returns a pointer to the property by identifier.
 
-- id: идентификатор [свойствa](../property/README.md).
+- id: identifier of the [property](../property/README.md).
 
 ***
 
 **virtual void HandleCurrentState()**
 
-Обрабатывает текущее состяние ноды. Вызывает обработку текущих состояний у [свойств](../property/README.md).
+Handles the current state of the node. Calls processing of the current states of [properties](../property/README.md).

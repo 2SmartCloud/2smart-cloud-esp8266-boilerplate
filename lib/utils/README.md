@@ -1,6 +1,6 @@
 # Utils
 
-Библиотека с функциями-утилитами.
+Library with utility functions.
 
 ***
 
@@ -14,32 +14,32 @@
 
 **std::string RandomString(uint8_t seed, uint8_t length)**
 
-Генерирует строку указанной длинны со случайными буквами и числами.
+Generates a string of the specified length with random letters and numbers.
 
-- seed: число которое используется для создания строки.
-- length: длинн желаемой строки.
+- seed: the number that is used to create the string.
+- length: the length of the desired string.
 
-Возвращает строку со случайными буквами и числами.
+Returns a string with random letters and numbers.
 
 ***
 
 **String TimeToStr(uint8_t hours, uint8_t minutes)**
 
-Соединяет часы и минуты в строку.
+Concatenates hours and minutes into a string.
 
-Пример: `"15:37"`.
+Example: `"15:37"`.
 
-- hours: часы.
-- minutes: минуты.
+- hours: hours.
+- minutes: minutes.
 
-Возвращает строку со временем. 
+Returns a string with time. 
 
 ***
 
-**String Sha256(String data)**
+**String Sha_256(String data)**
 
-Вычисляет хеш от строки используя алгоритм хеширования SHA256.
+Computes a hash from a string using the SHA256 hashing algorithm.
 
-- data: строка от которой вычисляется хеш.
+- data: the string from which the hash is calculated.
 
-Возвращает вычисленный хеш.
+Returns the computed hash.

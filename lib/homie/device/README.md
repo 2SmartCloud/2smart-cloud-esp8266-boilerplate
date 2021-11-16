@@ -1,23 +1,23 @@
 # DeviceData
 
-Структура которая содержит необходимые данные для устройства
+The structure that contains the necessary data for the device
 
 ## Properties
 
-- const char* name - имя устройства
-- const char* fw_ver - версия прошивки
-- const char* fw_name - название прошивки
-- const char* ip - IP адрес устройства
-- const char* impl - Идентификатор для реализации Homie (например, "esp-32")
-- const char* mac - MAC адресс устройства
-- const char* state - состояние устройства
-- const char* id - идентификатор устройства
+- const char* name - device name
+- const char* fw_ver - firmware version
+- const char* fw_name - firmware name
+- const char* ip - device IP address
+- const char* impl - identifier for the Homie implementation (for example, "esp-8266")
+- const char* mac - MAC address of the device
+- const char* state - device state
+- const char* id - device id
 
 ***
 
 # Device
 
-Класс для работы с устройством.
+A class for working with a device.
 
 ***
 ## API
@@ -40,94 +40,94 @@
 
 **Device(Homie\* homie)**
 
-Создает объект устройства.
+Creates a device object.
 
-- homie: указатель на объект [homie](../README.md).
+- homie: pointer to the [homie](../README.md) object.
 
 ***
 
 **void SetCredentials(DeviceData device_data)**
 
-Присваивает необходимые данные устройству.
+Assigns the required data to the device.
 
-- device_data: структура с данными для устройства.
+- device_data: structure with data for the device.
 
 ***
 
 **bool Init()**
 
-Инициализирует устройство опубликовав необходимые аттрибуты. Вызывает инициализацию у [нод](../node/README.md) и [свойств](../property/README.md).
+Initializes the device by publishing the required attributes. Causes initialization of [nodes](../node/README.md) and [properties](../property/README.md).
 
-Возвращает статус инициализации.
+Returns the initialization status.
 
 ***
 
 **void AddNode(Node\* node)**
 
-Добавляет указатель на ноду в список нод для дальнейшего обращения.
+Adds a pointer to a node to the list of nodes for further reference.
 
-- node: указатель на ноду.
+- node: node pointer.
 
 ***
 
 **void AddProperty(Property\* property)**
 
-Добавляет указатель на свойство в список свойств для дальнейшего обращения.
+Adds a pointer to the property to the property list for further reference.
 
-- property: указатель на [свойство](../property/README.md).
+- property: pointer to the [property](../property/README.md).
 
 ***
 
 **String GetId() const**
 
-Возвращает идентификатор устройства.
+Returns the device identifier.
 
 ***
 
 **String GetFirmwareVersion() const**
 
-Возвращает версию прошивки.
+Returns the firmware version.
 
 ***
 
 **Node\* GetNode(String id)**
 
-Возвращает указатель на ноду по идентификатору.
+Returns a pointer to a node by identifier.
 
-- id: идентификатор [ноды](../node/README.md).
+- id: identifier of the [node](../node/README.md).
 
 ***
 
 **void SetNotifier(Notifier\* notifier)**
 
-Сохраняет указатель на модуль уведомлений.
+Stores a pointer to the notification module.
 
-- notifier: указатель на объект [модуля уведомлений](../notifier/README.md).
+- notifier: pointer to the [notification module](../notifier/README.md) object.
 
 ***
 
 **void HandleCurrentState()**
 
-Вызывает обработку текущих состояний у [нод](../node/README.md) и [свойств](../property/README.md). Осуществялет отправку heartbeat.
+Calls processing of the current states of [nodes](../node/README.md) and [properties](../property/README.md). Sends the heartbeat.
 
 ***
 
 **bool SendNotification(String text)**
 
-Отправляет уведомление с принятым текстом.
+Sends a notification with the received text.
 
-- text: текст сообщения.
+- text: message text.
 
-Возвращает статус отправки уведомления.
+Returns the status of sending the notification.
 
 ***
 
 **bool IsSysNotifyEnabled()**
 
-Возвращает состояние системных уведомлений.
+Returns the status of system notifications.
 
 ***
 
 **bool IsFwNotifyEnabled()**
 
-Возвращает состояние уведомлений об обновлениях.
+Returns the status of update notifications.

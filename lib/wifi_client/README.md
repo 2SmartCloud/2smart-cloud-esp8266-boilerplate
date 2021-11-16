@@ -1,6 +1,6 @@
 # WifiClient
 
-Класс для работы с Wi-Fi клиентом.
+A class for working with a Wi-Fi client.
 
 ***
 
@@ -14,21 +14,21 @@
 
 **MqttClient()**
 
-Создает объект Wi-Fi клиента.
+Creates a Wi-Fi client object.
 
 ***
 
 **void SetCredentials(String ssid_name, String ssid_password)**
 
-Метод для установки имени и пароля к Wi-Fi.
+Method for setting Wi-Fi username and password.
 
-- ssid_name: назваение сети.
-- ssid_password: пароль к сети.
+- ssid_name: the name of the network.
+- ssid_password: network password.
 
 ***
 
 **Connect()**
 
-Подключается к сети, в случае если подключение ещё не установленно устанавливает его.
+Connects to the network if the connection has not yet been established.
 
-Возвращает статус подключения.
+Returns the connection status.

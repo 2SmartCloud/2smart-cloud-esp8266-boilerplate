@@ -1,6 +1,6 @@
 # WebServer
 
-Библиотека для работы с вебсервером.
+A class for working with a web server.
 
 ***
 
@@ -14,22 +14,20 @@
 
 **bool WebServerInit()**
 
-Инициализирует веб-сервер. Метод устанавливает оброботчики следующих роутов:
+Initializes a web server. The method sets up handlers for the following routes:
 
 **GET** /healthcheck  
-Возвращает код 200.
+Returns the 200 code.
 
 **GET** /pair  
-Метод сохраняющий новые параметры из мобильного приложения. Перезагружает ESP для приминения изменений.
+A method that saves new parameters from a mobile application. Reloads the ESP to apply the changes.
 Query params:
-  - ssid - email адрес пользователя.
-  - psk - пароль пользователя.
-  - wsp - порт MQTT брокера.
-  - token - пароль пользователя.
-  - host - адрес где установлен MQTT брокер.
-  - brport - порт MQTT брокера.
+  - ssid - user's email address.
+  - psk - user's password.
+  - wsp - MQTT broker's port.
+  - token - user's password.
+  - host - the address where the MQTT broker is installed.
+  - brport - MQTT broker's port.
 
 ***
 
-**void WebServerHandle()**
-Метод вызывающий обработчик состояняия вебсервера.
