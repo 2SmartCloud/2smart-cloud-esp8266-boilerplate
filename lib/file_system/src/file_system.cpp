@@ -22,14 +22,14 @@ bool LoadConfig() {
         EraseFlash();
     }
 
-    snprintf(ssid_name, sizeof(ssid_name), "%s", user_data.ssid_name);
-    snprintf(ssid_password, sizeof(ssid_password), "%s", user_data.ssid_password);
-    snprintf(person_mail, sizeof(person_mail), "%s", user_data.person_mail);
-    snprintf(person_id, sizeof(person_id), "%s", user_data.person_id);
-    snprintf(token, sizeof(token), "%s", user_data.token);
-    snprintf(host, sizeof(host), "%s", user_data.host);
-    broker_port = user_data.broker_port;
-    snprintf(device_id, sizeof(device_id), "%s", user_data.device_id);
+    if (strcmp(user_data.ssid_name, "")) snprintf(ssid_name, sizeof(ssid_name), "%s", user_data.ssid_name);
+    if (strcmp(user_data.ssid_password, "")) snprintf(ssid_password, sizeof(ssid_password), "%s", user_data.ssid_password);
+    if (strcmp(user_data.person_mail, "")) snprintf(person_mail, sizeof(person_mail), "%s", user_data.person_mail);
+    if (strcmp(user_data.person_id, "")) snprintf(person_id, sizeof(person_id), "%s", user_data.person_id);
+    if (strcmp(user_data.token, "")) snprintf(token, sizeof(token), "%s", user_data.token);
+    if (strcmp(user_data.host, "")) snprintf(host, sizeof(host), "%s", user_data.host);
+    if (strcmp(user_data.device_id, "")) snprintf(device_id, sizeof(device_id), "%s", user_data.device_id);
+    if (user_data.broker_port) broker_port = user_data.broker_port;
 
     return true;
 }
